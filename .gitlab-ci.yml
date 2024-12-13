@@ -1,0 +1,8 @@
+stages:
+- test
+variables:
+  DOCKLER_HOST: unix:///var/run/docker.sock
+unit-test:
+  stage: test
+  script: docker compose run --rm unit-tests
+  after_script: docker compose stop selenium website 
