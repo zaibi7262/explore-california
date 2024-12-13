@@ -15,7 +15,7 @@ services:
   website:
     image: nginx:1.25.4-alpine
     volumes:
-      - ${ACTUAL_PWD:-$PWD}/explore-california-website:/usr/share/nginx/html
+      - ${ACTUAL_PWD:-$PWD}/website:/usr/share/nginx/html
     ports:
       - 8080:80
     networks:
