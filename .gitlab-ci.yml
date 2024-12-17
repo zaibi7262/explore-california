@@ -14,4 +14,5 @@ deploy-to-netlify:
     - npm install -g netlify-cli
     - netlify login --auth "$NETLIFY_AUTH_TOKEN"
   script: netlify deploy --prod --dir=website
-  only: main
+  only:
+    - main
