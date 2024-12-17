@@ -1,8 +1,17 @@
 stages:
 - test
+- deploy
 variables:
   DOCKLER_HOST: unix:///var/run/docker.sock
 unit-test:
   stage: test
   script: docker compose run --rm unit-tests
-  after_script: docker compose stop selenium website 
+  after_script: docker compose stop selenium website
+deploy-to-netlify:
+  stage: deploy
+  image: node:16-alpine
+  before_script: 
+    - npm install -g netlify-cli
+    - netlify login --auth "$NETLIFY_AUTH_TOKEN"
+  script: netlify deploy --prod --dir=website
+  only: main
