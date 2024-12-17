@@ -12,7 +12,7 @@ deploy-to-netlify:
   image: node:16-alpine
   before_script: 
     - npm install -g netlify-cli
-    - netlify login --auth "$NETLIFY_AUTH_TOKEN"
+    - netlify deploy --prod --dir=website --auth=$NETLIFY_AUTH_TOKEN --site=34c6790d-b38a-4e66-9da3-ff2ee87e12f2
   script: netlify deploy --prod --dir=website
   only:
     - main
